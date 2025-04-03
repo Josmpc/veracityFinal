@@ -1,19 +1,6 @@
-
-import Link from "next/link";
-
 export default function VeracitiLandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-blue-50 p-6 font-sans">
-      <nav className="bg-white shadow-md rounded-xl px-6 py-4 mb-8 flex justify-between items-center max-w-6xl mx-auto">
-        <h1 className="text-xl font-bold">Veraciti</h1>
-        <div className="flex gap-6 text-blue-600 font-medium">
-          <Link href="/">Início</Link>
-          <Link href="/analisar">Analisar</Link>
-          <Link href="/comparar">Comparar</Link>
-          <Link href="/feedback">Feedback</Link>
-        </div>
-      </nav>
-
       <header className="max-w-5xl mx-auto text-center py-16">
         <h1 className="text-5xl font-bold mb-4">Veraciti</h1>
         <p className="text-xl text-gray-600 mb-6">
