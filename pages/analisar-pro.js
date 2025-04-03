@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function AnalisarPro() {
   const [link, setLink] = useState("");
@@ -72,25 +73,51 @@ export default function AnalisarPro() {
       </form>
 
       {analise && (
-        <div className="mt-10 space-y-4 bg-blue-50 p-6 rounded-xl shadow">
-          <p><strong>Título:</strong> {analise.titulo}</p>
-          <p><strong>Fonte:</strong> {analise.fonte}</p>
-          <p><strong>Tipo de Linguagem:</strong> {analise.linguagem}</p>
-          <p><strong>Score de Veracidade:</strong> {analise.score}%</p>
-          <div className="h-4 w-full bg-gray-200 rounded overflow-hidden">
-            <div
-              className="h-full bg-green-500"
-              style={{ width: `${analise.score}%` }}
-            ></div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 space-y-6 bg-white p-6 rounded-xl shadow-xl border border-blue-200"
+        >
+          <div className="bg-blue-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">📰 Título:</p>
+            <p>{analise.titulo}</p>
           </div>
-          <p><strong>Elementos Visuais Detetados:</strong></p>
-          <ul className="list-disc list-inside">
-            {analise.visuais.map((v, i) => (
-              <li key={i}>{v}</li>
-            ))}
-          </ul>
-          <p><strong>Comportamento de Partilha:</strong> {analise.partilha}</p>
-        </div>
+
+          <div className="bg-gray-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">🏷️ Fonte:</p>
+            <p>{analise.fonte}</p>
+          </div>
+
+          <div className="bg-yellow-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">🗣️ Tipo de Linguagem:</p>
+            <p>{analise.linguagem}</p>
+          </div>
+
+          <div className="bg-green-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">✅ Score de Veracidade: {analise.score}%</p>
+            <div className="h-4 w-full bg-gray-200 rounded overflow-hidden">
+              <div
+                className="h-full bg-green-500"
+                style={{ width: `${analise.score}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="bg-purple-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">🎨 Elementos Visuais Detetados:</p>
+            <ul className="list-disc list-inside">
+              {analise.visuais.map((v, i) => (
+                <li key={i}>{v}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-red-100 p-4 rounded-xl">
+            <p className="text-lg font-semibold">📈 Comportamento de Partilha:</p>
+            <p>{analise.partilha}</p>
+          </div>
+        </motion.div>
       )}
     </div>
   );
