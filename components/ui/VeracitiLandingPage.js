@@ -1,25 +1,36 @@
+import Link from "next/link";
 
 export default function VeracitiLandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-blue-50 p-6 font-sans">
+      {/* NAVBAR */}
+      <nav className="bg-white shadow-md rounded-xl px-6 py-4 mb-8 flex justify-between items-center max-w-6xl mx-auto">
+        <h1 className="text-xl font-bold">Veraciti</h1>
+        <div className="flex gap-6 text-blue-600 font-medium">
+          <Link href="/">Início</Link>
+          <Link href="/analisar">Analisar</Link>
+          <Link href="/comparar">Comparar</Link>
+          <Link href="/feedback">Feedback</Link>
+        </div>
+      </nav>
+
       <header className="max-w-5xl mx-auto text-center py-16">
         <h1 className="text-5xl font-bold mb-4">Veraciti</h1>
         <p className="text-xl text-gray-600 mb-6">
           Descobre a verdade por trás das notícias com inteligência visual e análise comportamental.
         </p>
         <div className="flex flex-col items-center gap-4">
-  <a href="/analisar">
-    <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-blue-600 text-white hover:bg-blue-700">
-      Experimenta Já
-    </button>
-  </a>
-  <a href="/comparar">
-    <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-purple-600 text-white hover:bg-purple-700">
-      Comparar duas notícias
-    </button>
-  </a>
-</div>
-</a>
+          <a href="/analisar">
+            <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-blue-600 text-white hover:bg-blue-700">
+              Experimenta Já
+            </button>
+          </a>
+          <a href="/comparar">
+            <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-purple-600 text-white hover:bg-purple-700">
+              Comparar duas notícias
+            </button>
+          </a>
+        </div>
       </header>
 
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
