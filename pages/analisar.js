@@ -15,6 +15,7 @@ export default function Analisar() {
       data: "---",
       alertas: [],
       partilhas: "?",
+      grafico: [10, 20, 30, 25, 40],
     };
 
     if (link.includes("cnn")) {
@@ -25,6 +26,7 @@ export default function Analisar() {
         data: "2 de abril de 2025",
         alertas: [],
         partilhas: "📊 Elevada no Twitter e Reddit",
+        grafico: [5, 20, 50, 40, 10],
       };
     } else if (link.includes("weird") || link.includes("click")) {
       simulado = {
@@ -34,6 +36,7 @@ export default function Analisar() {
         data: "Data não identificada",
         alertas: ["Título possivelmente clickbait", "Fonte não verificada"],
         partilhas: "📈 Alta no Facebook com comentários polarizados",
+        grafico: [40, 10, 30, 15, 5],
       };
     } else {
       simulado = {
@@ -43,6 +46,7 @@ export default function Analisar() {
         data: "31 de março de 2025",
         alertas: ["Falta de fontes citadas"],
         partilhas: "📉 Baixa nos últimos 3 dias",
+        grafico: [10, 15, 20, 15, 10],
       };
     }
 
@@ -93,6 +97,23 @@ export default function Analisar() {
               <li>Nenhum alerta identificado</li>
             )}
           </ul>
+
+          <div className="mt-6">
+            <p className="font-semibold mb-2">Atividade nas Redes (Simulada)</p>
+            <div className="flex items-end gap-2 h-32">
+              {resultado.grafico.map((val, i) => (
+                <div
+                  key={i}
+                  className="bg-blue-400 w-6 rounded-t"
+                  style={{ height: `${val * 2}px` }}
+                  title={`Valor ${val}`}
+                ></div>
+              ))}
+            </div>
+            <div className="flex justify-between text-sm text-gray-600 mt-1">
+              <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span>
+            </div>
+          </div>
         </div>
       )}
     </div>
