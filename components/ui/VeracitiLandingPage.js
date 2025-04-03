@@ -12,6 +12,11 @@ export default function VeracitiLandingPage() {
     Experimenta Já
   </button>
 </a>
+    <a href="/comparar">
+  <button className="mt-4 text-lg px-6 py-4 rounded-2xl shadow-md bg-purple-600 text-white hover:bg-purple-700">
+    Comparar duas notícias
+  </button>
+</a>
       </header>
 
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
