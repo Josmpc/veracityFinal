@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-export default function AnalisarSimulado() {
+export default function AnalisarPro() {
   const [link, setLink] = useState("");
   const [analise, setAnalise] = useState(null);
 
   const simularAnalise = (link) => {
     let resultado = {
       titulo: "",
+      fonte: "",
       linguagem: "",
       visuais: [],
       partilha: "",
@@ -16,6 +17,7 @@ export default function AnalisarSimulado() {
     if (link.includes("cnn")) {
       resultado = {
         titulo: "CNN: Governo anuncia novas medidas económicas",
+        fonte: "CNN",
         linguagem: "Neutra / Informativa",
         visuais: ["Layout limpo", "Fonte tradicional", "Imagem contextual"],
         partilha: "Partilha normal entre utilizadores verificados",
@@ -24,6 +26,7 @@ export default function AnalisarSimulado() {
     } else if (link.includes("weird") || link.includes("click")) {
       resultado = {
         titulo: "NÃO VAI ACREDITAR no que este político fez hoje! 😱",
+        fonte: "Fonte duvidosa",
         linguagem: "Emocional / Sensacionalista",
         visuais: ["Título com capslock", "Thumbnail exagerada", "Texto sublinhado"],
         partilha: "Picos de partilha em grupos fechados, padrão anómalo",
@@ -32,7 +35,8 @@ export default function AnalisarSimulado() {
     } else {
       resultado = {
         titulo: "Artigo sem título conhecido",
-        linguagem: "Desconhecida",
+        fonte: "Desconhecida",
+        linguagem: "Levemente opinativa",
         visuais: ["Layout genérico"],
         partilha: "Padrão de partilha indefinido",
         score: 65,
@@ -49,11 +53,11 @@ export default function AnalisarSimulado() {
 
   return (
     <div className="min-h-screen bg-white p-8">
-      <h1 className="text-3xl font-bold mb-6">Análise Simulada de Link</h1>
+      <h1 className="text-3xl font-bold mb-6">Análise Veraciti Pro</h1>
       <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
         <input
           type="text"
-          placeholder="Cole aqui o link..."
+          placeholder="Cole aqui o link da notícia..."
           className="w-full p-4 border rounded-xl shadow"
           value={link}
           onChange={(e) => setLink(e.target.value)}
@@ -70,6 +74,7 @@ export default function AnalisarSimulado() {
       {analise && (
         <div className="mt-10 space-y-4 bg-blue-50 p-6 rounded-xl shadow">
           <p><strong>Título:</strong> {analise.titulo}</p>
+          <p><strong>Fonte:</strong> {analise.fonte}</p>
           <p><strong>Tipo de Linguagem:</strong> {analise.linguagem}</p>
           <p><strong>Score de Veracidade:</strong> {analise.score}%</p>
           <div className="h-4 w-full bg-gray-200 rounded overflow-hidden">
