@@ -6,12 +6,47 @@ export default function Analisar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulação de "análise"
-    setResultado({
-      veracidade: "72%",
-      alertas: ["Fonte não verificada", "Título possivelmente clickbait"],
-      partilhas: "📈 Elevada nas últimas 24h (principalmente no Facebook)",
-    });
+
+    // Lógica de simulação baseada no link
+    let simulado = {
+      veracidade: "??%",
+      fonte: "Desconhecida",
+      linguagem: "N/A",
+      data: "---",
+      alertas: [],
+      partilhas: "?",
+    };
+
+    if (link.includes("cnn")) {
+      simulado = {
+        veracidade: "92%",
+        fonte: "CNN",
+        linguagem: "Neutra / Informativa",
+        data: "2 de abril de 2025",
+        alertas: [],
+        partilhas: "📊 Elevada no Twitter e Reddit",
+      };
+    } else if (link.includes("weird") || link.includes("click")) {
+      simulado = {
+        veracidade: "38%",
+        fonte: "Fonte duvidosa",
+        linguagem: "Emocional / Sensacionalista",
+        data: "Data não identificada",
+        alertas: ["Título possivelmente clickbait", "Fonte não verificada"],
+        partilhas: "📈 Alta no Facebook com comentários polarizados",
+      };
+    } else {
+      simulado = {
+        veracidade: "67%",
+        fonte: "Fonte desconhecida",
+        linguagem: "Levemente opinativa",
+        data: "31 de março de 2025",
+        alertas: ["Falta de fontes citadas"],
+        partilhas: "📉 Baixa nos últimos 3 dias",
+      };
+    }
+
+    setResultado(simulado);
   };
 
   return (
@@ -37,17 +72,29 @@ export default function Analisar() {
 
       {resultado && (
         <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl space-y-4">
-          <p><strong>Score de Veracidade:</strong> {resultado.veracidade}</p>
+          <div>
+            <p><strong>Score de Veracidade:</strong> {resultado.veracidade}</p>
+            <div className="h-4 w-full bg-gray-200 rounded overflow-hidden">
+              <div
+                className="h-full bg-green-500"
+                style={{ width: resultado.veracidade }}
+              ></div>
+            </div>
+          </div>
+          <p><strong>Fonte:</strong> {resultado.fonte}</p>
+          <p><strong>Data de Publicação:</strong> {resultado.data}</p>
+          <p><strong>Tipo de Linguagem:</strong> {resultado.linguagem}</p>
+          <p><strong>Disseminação:</strong> {resultado.partilhas}</p>
           <p><strong>Alertas:</strong></p>
           <ul className="list-disc list-inside">
-            {resultado.alertas.map((alerta, i) => (
-              <li key={i}>{alerta}</li>
-            ))}
+            {resultado.alertas.length > 0 ? (
+              resultado.alertas.map((alerta, i) => <li key={i}>{alerta}</li>)
+            ) : (
+              <li>Nenhum alerta identificado</li>
+            )}
           </ul>
-          <p><strong>Disseminação:</strong> {resultado.partilhas}</p>
         </div>
       )}
     </div>
   );
 }
-
