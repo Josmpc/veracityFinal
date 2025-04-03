@@ -7,9 +7,11 @@ export default function VeracitiLandingPage() {
         <p className="text-xl text-gray-600 mb-6">
           Descobre a verdade por trás das notícias com inteligência visual e análise comportamental.
         </p>
-        <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-blue-600 text-white hover:bg-blue-700">
-          Experimenta Já
-        </button>
+        <a href="/analisar">
+  <button className="text-lg px-6 py-4 rounded-2xl shadow-md bg-blue-600 text-white hover:bg-blue-700">
+    Experimenta Já
+  </button>
+</a>
       </header>
 
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
